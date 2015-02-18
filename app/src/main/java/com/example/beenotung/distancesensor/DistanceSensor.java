@@ -94,6 +94,9 @@ public class DistanceSensor {
     public void onSensorChanged(SensorEvent event) {
         if (!started) return;
         if (configurating) {
+            background_acceleration_x=event.values[0];
+            background_acceleration_y=event.values[1];
+            background_acceleration_z=event.values[2];
         } else {
             acceleration_x = event.values[0];
             acceleration_y = event.values[1];

@@ -105,63 +105,75 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <TextView
-                android:textSize="12sp"
+                android:id="@+id/title_background_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/title_background_x"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/title_background_x" />
+                android:textSize="12sp" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
 
             <TextView
-                android:textSize="12sp"
+                android:id="@+id/value_background_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/value_background_x" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/title_background_y"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:text="@string/title_background_y"
-                android:id="@+id/title_background_y" />
+                android:textSize="12sp" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
 
             <TextView
+                android:id="@+id/value_background_y"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:id="@+id/value_background_y" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/title_background_z"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:text="@string/title_background_z"
-                android:id="@+id/title_background_z" />
+                android:textSize="12sp" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
 
             <TextView
+                android:id="@+id/value_background_z"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:id="@+id/value_background_z" />
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

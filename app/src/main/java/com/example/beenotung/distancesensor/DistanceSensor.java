@@ -20,10 +20,13 @@ public class DistanceSensor {
     public Sensor accelerometer;
     public double vibrateThreshold;
     public Vibrator v;
+    public float background_acceleration_x, background_acceleration_y, background_acceleration_z;
     public float acceleration_x, acceleration_y, acceleration_z;
     public float displacement_x = 0, displacement_y = 0, displacement_z = 0;
     public TextView textView_x, textView_y, textView_z;
+    public TextView textView_background_x, textView_background_y, textView_background_z;
     public boolean started = false;
+    public boolean configurating = false;
 
     public DistanceSensor(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -32,24 +35,35 @@ public class DistanceSensor {
         textView_x = (TextView) mainActivity.findViewById(R.id.value_x);
         textView_y = (TextView) mainActivity.findViewById(R.id.value_y);
         textView_z = (TextView) mainActivity.findViewById(R.id.value_z);
+        textView_background_x = (TextView) mainActivity.findViewById(R.id.value_background_x);
+        textView_background_y = (TextView) mainActivity.findViewById(R.id.value_background_y);
+        textView_background_z = (TextView) mainActivity.findViewById(R.id.value_background_z);
 
         //set up view event
-        ((Button) mainActivity.findViewById(R.id.btn_reset)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reset();
-            }
-        });
         ((Button) mainActivity.findViewById(R.id.btn_start)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 started = true;
+                configurating = false;
             }
         });
         ((Button) mainActivity.findViewById(R.id.btn_stop)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 started = false;
+            }
+        });
+        ((Button) mainActivity.findViewById(R.id.btn_config)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                configurating = true;
+                started = true;
+            }
+        });
+        ((Button) mainActivity.findViewById(R.id.btn_reset)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
             }
         });
 
@@ -68,6 +82,7 @@ public class DistanceSensor {
         v = (Vibrator) mainActivity.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
+
     private void reset() {
         displacement_x = displacement_y = displacement_z = 0;
         updateView();
@@ -75,22 +90,35 @@ public class DistanceSensor {
 
     public void onSensorChanged(SensorEvent event) {
         if (!started) return;
-        acceleration_x = event.values[0];
-        acceleration_y = event.values[1];
-        acceleration_z = event.values[2];
-        displacement_x += acceleration_x;
-        displacement_y += acceleration_y;
-        displacement_z += acceleration_z;
+        if (configurating) {
+        } else {
+            acceleration_x = event.values[0];
+            acceleration_y = event.values[1];
+            acceleration_z = event.values[2];
+            displacement_x += acceleration_x;
+            displacement_y += acceleration_y;
+            displacement_z += acceleration_z;
+        }
         updateView();
     }
 
     public void updateView() {
-        textView_x.setText(String.valueOf(displacement_x));
-        textView_y.setText(String.valueOf(displacement_y));
-        textView_z.setText(String.valueOf(displacement_z));
+        if (configurating) {
+            textView_background_x.setText(String.valueOf(background_acceleration_x));
+            textView_background_y.setText(String.valueOf(background_acceleration_y));
+            textView_background_z.setText(String.valueOf(background_acceleration_z));
 
-        textView_x.setGravity(Gravity.CENTER);
-        textView_y.setGravity(Gravity.CENTER);
-        textView_z.setGravity(Gravity.CENTER);
+            textView_background_x.setGravity(Gravity.CENTER);
+            textView_background_y.setGravity(Gravity.CENTER);
+            textView_background_z.setGravity(Gravity.CENTER);
+        } else {
+            textView_x.setText(String.valueOf(displacement_x));
+            textView_y.setText(String.valueOf(displacement_y));
+            textView_z.setText(String.valueOf(displacement_z));
+
+            textView_x.setGravity(Gravity.CENTER);
+            textView_y.setGravity(Gravity.CENTER);
+            textView_z.setGravity(Gravity.CENTER);
+        }
     }
 }

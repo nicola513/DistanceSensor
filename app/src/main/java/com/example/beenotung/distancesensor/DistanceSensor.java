@@ -56,8 +56,7 @@ public class DistanceSensor {
         ((Button) mainActivity.findViewById(R.id.btn_config)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                configurating = true;
-                started = true;
+                config();
             }
         });
         ((Button) mainActivity.findViewById(R.id.btn_reset)).setOnClickListener(new View.OnClickListener() {
@@ -82,6 +81,10 @@ public class DistanceSensor {
         v = (Vibrator) mainActivity.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
+    private void config() {
+        configurating = true;
+        started = true;
+    }
 
     private void reset() {
         displacement_x = displacement_y = displacement_z = 0;

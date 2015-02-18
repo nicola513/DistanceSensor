@@ -23,7 +23,7 @@ public class DistanceSensor {
     public float acceleration_x, acceleration_y, acceleration_z;
     public float displacement_x = 0, displacement_y = 0, displacement_z = 0;
     public TextView textView_x, textView_y, textView_z;
-
+public boolean started=false;
     public DistanceSensor(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
 
@@ -37,6 +37,18 @@ public class DistanceSensor {
             @Override
             public void onClick(View v) {
                 reset();
+            }
+        });
+        ((Button) mainActivity.findViewById(R.id.btn_start)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                started=true;
+            }
+        });
+        ((Button) mainActivity.findViewById(R.id.btn_stop)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                started=false;
             }
         });
 
@@ -61,6 +73,7 @@ public class DistanceSensor {
     }
 
     public void onSensorChanged(SensorEvent event) {
+        if(!started)return;
         acceleration_x = event.values[0];
         acceleration_y = event.values[1];
         acceleration_z = event.values[2];

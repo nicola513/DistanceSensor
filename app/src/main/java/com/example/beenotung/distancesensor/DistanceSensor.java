@@ -29,6 +29,7 @@ public class DistanceSensor {
     public float displacement_x = 0, displacement_y = 0, displacement_z = 0;
     public float displacement_rotation_x = 0, displacement_rotation_y = 0, displacement_rotation_z = 0;
     public TextView textView_x, textView_y, textView_z;
+    public TextView textView_rotate_x, textView_rotate_y, textView_rotate_z;
     public TextView textView_background_x, textView_background_y, textView_background_z;
     public TextView textView_background_rotate_x, textView_background_rotate_y, textView_background_rotate_z;
     public boolean started = false;
@@ -41,6 +42,9 @@ public class DistanceSensor {
         textView_x = (TextView) mainActivity.findViewById(R.id.value_x);
         textView_y = (TextView) mainActivity.findViewById(R.id.value_y);
         textView_z = (TextView) mainActivity.findViewById(R.id.value_z);
+        textView_rotate_x = (TextView) mainActivity.findViewById(R.id.value_rotate_x);
+        textView_rotate_y = (TextView) mainActivity.findViewById(R.id.value_rotate_y);
+        textView_rotate_z = (TextView) mainActivity.findViewById(R.id.value_rotate_z);
         textView_background_x = (TextView) mainActivity.findViewById(R.id.value_background_x);
         textView_background_y = (TextView) mainActivity.findViewById(R.id.value_background_y);
         textView_background_z = (TextView) mainActivity.findViewById(R.id.value_background_z);
@@ -163,10 +167,16 @@ public class DistanceSensor {
             textView_x.setText(String.valueOf(displacement_x));
             textView_y.setText(String.valueOf(displacement_y));
             textView_z.setText(String.valueOf(displacement_z));
+            textView_rotate_x.setText(String.valueOf(displacement_rotation_x));
+            textView_rotate_y.setText(String.valueOf(displacement_rotation_y));
+            textView_rotate_z.setText(String.valueOf(displacement_rotation_z));
 
             textView_x.setGravity(Gravity.CENTER);
             textView_y.setGravity(Gravity.CENTER);
             textView_z.setGravity(Gravity.CENTER);
+            textView_rotate_x.setGravity(Gravity.CENTER);
+            textView_rotate_y.setGravity(Gravity.CENTER);
+            textView_rotate_z.setGravity(Gravity.CENTER);
         }
     }
 }

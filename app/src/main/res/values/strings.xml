@@ -15,6 +15,9 @@
     <string name="title_x">X distance</string>
     <string name="title_y">Y distance</string>
     <string name="title_z">Z distance</string>
+    <string name="title_rotate_x">X Rotate</string>
+    <string name="title_rotate_y">Y Rotate</string>
+    <string name="title_rotate_z">Z Rotate</string>
     <string name="title_background_x">background X acceleration</string>
     <string name="title_background_y">background Y acceleration</string>
     <string name="title_background_z">background Z acceleration</string>

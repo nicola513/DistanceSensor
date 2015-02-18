@@ -44,14 +44,13 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
-        //set up sensor
-        distanceSensor = new DistanceSensor(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        //set up sensor
+        distanceSensor = new DistanceSensor(this);
         distanceSensor.sensorManager.registerListener(this, distanceSensor.accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
     }
 

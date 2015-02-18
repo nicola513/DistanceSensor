@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/value_x"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="20" />
@@ -62,7 +62,7 @@
 
         <TextView
             android:id="@+id/value_y"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="20" />
@@ -76,7 +76,7 @@
 
         <TextView
             android:id="@+id/value_z"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="20"/>

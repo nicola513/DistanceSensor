@@ -5,7 +5,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.os.Vibrator;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -30,6 +31,14 @@ public class DistanceSensor {
         textView_y = (TextView) mainActivity.findViewById(R.id.value_y);
         textView_z = (TextView) mainActivity.findViewById(R.id.value_z);
 
+        //set up view event
+        ((Button) mainActivity.findViewById(R.id.btn_reset)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
+            }
+        });
+
         //set up sensor
         //reference http://examples.javacodegeeks.com/android/core/hardware/sensor/android-accelerometer-example/
         sensorManager = (SensorManager) mainActivity.getSystemService(Context.SENSOR_SERVICE);
@@ -45,6 +54,11 @@ public class DistanceSensor {
         v = (Vibrator) mainActivity.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
+    private void reset() {
+        displacement_x = displacement_y = displacement_z = 0;
+        updateView();
+    }
+
     public void onSensorChanged(SensorEvent event) {
         acceleration_x = event.values[0];
         acceleration_y = event.values[1];
@@ -52,7 +66,7 @@ public class DistanceSensor {
         displacement_x += acceleration_x;
         displacement_y += acceleration_y;
         displacement_z += acceleration_z;
-
+        updateView();
     }
 
     public void updateView() {

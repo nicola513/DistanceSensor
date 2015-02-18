@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.os.Vibrator;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -73,5 +74,9 @@ public class DistanceSensor {
         textView_x.setText(String.valueOf(displacement_x));
         textView_y.setText(String.valueOf(displacement_y));
         textView_z.setText(String.valueOf(displacement_z));
+
+        textView_x.setGravity(Gravity.CENTER);
+        textView_y.setGravity(Gravity.CENTER);
+        textView_z.setGravity(Gravity.CENTER);
     }
 }

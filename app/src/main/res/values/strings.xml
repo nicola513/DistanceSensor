@@ -18,5 +18,11 @@
     <string name="title_background_x">background X acceleration</string>
     <string name="title_background_y">background Y acceleration</string>
     <string name="title_background_z">background Z acceleration</string>
+    <string name="title_background_rotate_x">background X rotation</string>
+    <string name="title_background_rotate_y">background Y rotation</string>
+    <string name="title_background_rotate_z">background Z rotation</string>
+
+
+
 
 </resources>
